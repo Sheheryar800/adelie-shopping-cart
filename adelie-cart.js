@@ -18,4 +18,4 @@ class AdelieCart {
     }
 }
 
-new AdelieCart({})
+module.exports = { AdelieCart }
