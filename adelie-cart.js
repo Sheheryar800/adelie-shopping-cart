@@ -1,4 +1,4 @@
-class AdelieCart {
+export default class AdelieCart {
     constructor({marginTop='100px', color='#ce2d30', secretKey="a"}) {
         this.marginTop = marginTop;
         this.color = color;
@@ -17,5 +17,3 @@ class AdelieCart {
         }
     }
 }
-
-module.exports = { AdelieCart }
