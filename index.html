@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bootstrap Site</title>
+    <title>Adelie Cart</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
       integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./adelie-cart.css" />
   </head>
   <body>
     <div id="adelie"></div>
@@ -19,7 +20,12 @@
       integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="https://cdn.jsdelivr.net/gh/sheheryar800/adelie-shopping-cart@f78b8a5a6b1364d66c54e5db99f17700478a001a/adelie-cart.js"></script>
-    <script>    </script>
-  </body>
+    <script type="module" src="./adelie-cart.js"></script>
+    <script type="module">
+        import AdelieCart from './adelie-cart.js'
+        new AdelieCart({
+          color: '#ce2d30'
+        }).init()
+    </script>
+  </body> 
 </html>
