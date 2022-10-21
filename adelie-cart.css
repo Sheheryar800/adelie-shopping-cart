@@ -261,10 +261,47 @@ body{
 }
 #adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_body {
     height: 100%;
+    padding: 0px 10px;
 }
-#adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_body .adelie_floating_cart_body_product_body {
-    
+#adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_body .adelie_floating_cart_body_product_main {
+    margin: 10px auto 0 auto;
+    padding: 10px;
+    border-radius: var(--adelie-border-radius);
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #fff;
+    box-shadow: rgb(0 0 0 / 20%) 0px 1px 2px 0px;
+    position: relative;
 }
+#adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_body .adelie_floating_cart_body_product_main .adelie_floating_cart_body_product_close{
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 10000;
+}
+#adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_body .adelie_floating_cart_body_product_main .adelie_floating_cart_body_product_body {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+#adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_body .adelie_floating_cart_body_product_main .adelie_floating_cart_body_product_body .adelie_floating_cart_body_product_image img {
+    width: 50px;
+}
+#adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_body .adelie_floating_cart_body_product_main .adelie_floating_cart_body_product_body .adelie_floating_cart_body_product_name {
+    margin-left: 10px;
+}
+#adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_body .adelie_floating_cart_body_product_main .adelie_floating_cart_body_product_body .adelie_floating_cart_body_product_name img {
+    height: 17px;
+    border: var(--adelie-border);
+    padding: 4px;
+    cursor: pointer;
+}
+#adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_body .adelie_floating_cart_body_product_main .adelie_floating_cart_body_product_body .adelie_floating_cart_body_product_name span {
+    margin: auto 5px;
+}
+
 
 #adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_footer {
     border-top: 1px solid #f2f3f4 !important;

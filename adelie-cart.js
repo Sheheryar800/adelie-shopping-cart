@@ -378,6 +378,32 @@ export default class AdelieCart {
         `)
     }
     async listingFloatingCart() {
+        let data = ''
+        this.products?.map((v, i) => {
+            if (Object.keys(this.cart).includes(v.id)) {
+                const qty = this.cart[v.id]
+                data += `<div class="adelie_floating_cart_body_product">
+                    <div class="adelie_floating_cart_body_product_main">
+                        <div data-id="${v?.id}" class="adelie_floating_cart_body_product_close">
+                            <img src="./close.png" height="10px" width="10px" />
+                        </div>
+                        <div class="adelie_floating_cart_body_product_body">
+                            <div class="adelie_floating_cart_body_product_image">
+                                <img src="${v?.image?.downloadURL}" />
+                            </div>
+                            <div class="adelie_floating_cart_body_product_name">
+                                <h6>${v?.name}</h6>
+                                <div class="adelie_floating_cart_body_product_quantity">
+                                    <img src="./minus.png" data-id="${v?.id}" class="adelie_floating_cart_minus" />
+                                    <span>${qty}</span>
+                                    <img src="./plus (1).png" data-id="${v?.id}" class="adelie_floating_cart_plus" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+            }
+        })
         $('#adelie_floating_cart_main').html(`
             <div class="adelie_floating_cart">
                 <div id="adelie_floating_cart_close">
@@ -394,24 +420,7 @@ export default class AdelieCart {
                     </div>
                 </div>
                 <div class="adelie_floating_cart_body">
-                    <div class="adelie_floating_cart_body_product">
-                        <div id="adelie_floating_cart_body_product_close">
-                            <img src="./close.png" height="15px" width="15px" />
-                        </div>
-                        <div class="adelie_floating_cart_body_product_body">
-                            <div>
-                                <img />
-                            </div>
-                            <div class="adelie_floating_cart_body_product_name">
-                                <h6></h6>
-                                <div class="adelie_floating_cart_body_product_quantity">
-                                    <img src="./minus.png" />
-                                    <span>5</span>
-                                    <img src="./plus.png" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    ${data}
                 </div>
                 <div class="adelie_floating_cart_footer">
                     <button>REQUEST BOOKING</button>
@@ -510,12 +519,15 @@ export default class AdelieCart {
         $('.adelie_add_to_cart').on('click', function() {
             const id = $(this).attr('data-id')
             const value = parseInt($(`#stock-${id}`).val())
-            if (Object.keys(a.cart).filter(e => e == id).length > 0){
+            if (Object.keys(a.cart).includes(id)){
                 a.cart[id] += value
             }else{
                 a.cart[id] = value
             }
+            a.listingProductModel()
             a.listingFloatingCartIcon()
+            a.listingFloatingCart()
+            a.listingFunctions()
         })
         $('#adelie_floating_cart_icon_main').on('click', function () {
             $(this).addClass('adelie_model_none')
@@ -524,6 +536,37 @@ export default class AdelieCart {
         $('#adelie_floating_cart_close').on('click', function () {
             $('#adelie_floating_cart_main').addClass('adelie_model_none')
             $('#adelie_floating_cart_icon_main').removeClass('adelie_model_none')
+        })
+        $('.adelie_floating_cart_minus').on('click', function () {
+            const id = $(this).attr('data-id')
+            if (Object.keys(a.cart).includes(id)) {
+                if (a.cart[id] >= 2) {
+                    a.cart[id] -= 1
+                }else {
+                    delete a.cart[id]
+                }
+                a.listingFloatingCartIcon()
+                a.listingFloatingCart()
+                a.listingFunctions()
+            }
+        })
+        $('.adelie_floating_cart_plus').on('click', function () {
+            const id = $(this).attr('data-id')
+            if (Object.keys(a.cart).includes(id) && a.products.find(e => e.id === id).availableStock > a.cart[id]) {
+                a.cart[id] += 1
+                a.listingFloatingCartIcon()
+                a.listingFloatingCart()
+                a.listingFunctions()
+            }
+        })
+        $('.adelie_floating_cart_body_product_close').on('click', function () {
+            const id = $(this).attr('data-id')
+            if (Object.keys(a.cart).includes(id)){
+                delete a.cart[id]
+                a.listingFloatingCartIcon()
+                a.listingFloatingCart()
+                a.listingFunctions()
+            }
         })
     }
     async init() {
