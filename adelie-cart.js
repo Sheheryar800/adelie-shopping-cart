@@ -1,218 +1,9 @@
-const cat = [
-    {
-        "availableStock": 15,
-        "bundleItems": [],
-        "bundleItemsQueryHook": [],
-        "categories": [
-            {
-                "description": "tent items",
-                "id": "XtkrpdmUKXPqDsK97j21",
-                "name": "Tents",
-                "orgId": "1EFnp9dnRUnAWQTPO2U4"
-            }
-        ],
-        "categoriesQueryHook": [
-            "XtkrpdmUKXPqDsK97j21"
-        ],
-        "createdBy": "sGn9ZIc0hQPffroyZdAwcjFr7Sq2",
-        "createdOn": {
-            "_seconds": 1639157025,
-            "_nanoseconds": 744000000
-        },
-        "depreciation": {
-            "depreciationYears": null,
-            "initialDate": null,
-            "initialValue": null
-        },
-        "description": "side T piece for frame tents",
-        "domain": "QBO",
-        "id": "xJy9MTonHdlAaNUf13JZ",
-        "image": {
-            "downloadURL": "https://firebasestorage.googleapis.com/v0/b/adelie-logistics-dev-52205.appspot.com/o/orgs%2F1EFnp9dnRUnAWQTPO2U4%2Finventory-images%2Fside-T%2020x20.jpeg?alt=media&token=570204d1-33e7-4c60-a0c7-cab9cb271de3",
-            "fileName": "side-T 20x20.jpeg"
-        },
-        "isActive": true,
-        "isAvailable": true,
-        "isTaxable": true,
+import algoliasearch from 'https://cdn.jsdelivr.net/npm/algoliasearch@4.14.2/dist/algoliasearch-lite.esm.browser.js';
 
-        "name": "Side T",
-        "notes": "",
-        "orgId": "1EFnp9dnRUnAWQTPO2U4",
-        "qbId": "74",
-        "rates": [],
-        "stock": 16,
-        "syncToken": "0",
-        "turnaround": null,
-        "type": "rental",
-        "updateSource": "qbo",
-        "updatedBy": "sGn9ZIc0hQPffroyZdAwcjFr7Sq2",
-        "updatedOn": {
-            "_seconds": 1639157206,
-            "_nanoseconds": 767000000
-        }
-    },
-    {
-        "availableStock": 20,
-        "bundleItems": [],
-        "bundleItemsQueryHook": [],
-        "categories": [
-            {
-                "description": "tent items",
-                "id": "XtkrpdmUKXPqDsK97j21",
-                "name": "Tents",
-                "orgId": "1EFnp9dnRUnAWQTPO2U4"
-            }
-        ],
-        "categoriesQueryHook": [
-            "XtkrpdmUKXPqDsK97j21"
-        ],
-        "createdBy": "sGn9ZIc0hQPffroyZdAwcjFr7Sq2",
-        "createdOn": {
-            "_seconds": 1639157025,
-            "_nanoseconds": 744000000
-        },
-        "depreciation": {
-            "depreciationYears": null,
-            "initialDate": null,
-            "initialValue": null
-        },
-        "description": "10x20 Tent",
-        "domain": "QBO",
-        "id": "xJy9MTonHdlBaNUf13JZ",
-        "image": {
-            "downloadURL": "https://www.gettent.com/images/C08Y20X20-20x20-pinnacle-1-l.jpg",
-            "fileName": "side-T 20x20.jpeg"
-        },
-        "isActive": true,
-        "isAvailable": true,
-        "isTaxable": true,
-
-        "name": "10x20 Tent",
-        "notes": "",
-        "orgId": "1EFnp9dnRUnAWQTPO2U4",
-        "qbId": "74",
-        "rates": [],
-        "stock": 16,
-        "syncToken": "0",
-        "turnaround": null,
-        "type": "rental",
-        "updateSource": "qbo",
-        "updatedBy": "sGn9ZIc0hQPffroyZdAwcjFr7Sq2",
-        "updatedOn": {
-            "_seconds": 1639157206,
-            "_nanoseconds": 767000000
-        }
-    },
-    {
-        "availableStock": 100,
-        "bundleItems": [],
-        "bundleItemsQueryHook": [],
-        "categories": [
-            {
-                "description": "tent items",
-                "id": "XtkrpdmUKXPqDsK97j21",
-                "name": "Tables",
-                "orgId": "1EFnp9dnRUnAWQTPO2U4"
-            }
-        ],
-        "categoriesQueryHook": [
-            "XtkrpdmUKXPqDsK97j21"
-        ],
-        "createdBy": "sGn9ZIc0hQPffroyZdAwcjFr7Sq2",
-        "createdOn": {
-            "_seconds": 1639157025,
-            "_nanoseconds": 744000000
-        },
-        "depreciation": {
-            "depreciationYears": null,
-            "initialDate": null,
-            "initialValue": null
-        },
-        "description": "8 ft rectangle table",
-        "domain": "QBO",
-        "id": "xJy9MTonHdlCaNUf13JZ",
-        "image": {
-            "downloadURL": "https://www.gettent.com/images/RTBANQ30X96_l.jpg",
-            "fileName": "side-T 20x20.jpeg"
-        },
-        "isActive": true,
-        "isAvailable": true,
-        "isTaxable": true,
-
-        "name": "8 ft rectangle table",
-        "notes": "",
-        "orgId": "1EFnp9dnRUnAWQTPO2U4",
-        "qbId": "74",
-        "rates": [],
-        "stock": 16,
-        "syncToken": "0",
-        "turnaround": null,
-        "type": "rental",
-        "updateSource": "qbo",
-        "updatedBy": "sGn9ZIc0hQPffroyZdAwcjFr7Sq2",
-        "updatedOn": {
-            "_seconds": 1639157206,
-            "_nanoseconds": 767000000
-        }
-    },
-    {
-        "availableStock": 200,
-        "bundleItems": [],
-        "bundleItemsQueryHook": [],
-        "categories": [
-            {
-                "description": "tent items",
-                "id": "XtkrpdmUKXPqDsK97j21",
-                "name": "Tents",
-                "orgId": "1EFnp9dnRUnAWQTPO2U4"
-            }
-        ],
-        "categoriesQueryHook": [
-            "XtkrpdmUKXPqDsK97j21"
-        ],
-        "createdBy": "sGn9ZIc0hQPffroyZdAwcjFr7Sq2",
-        "createdOn": {
-            "_seconds": 1639157025,
-            "_nanoseconds": 744000000
-        },
-        "depreciation": {
-            "depreciationYears": null,
-            "initialDate": null,
-            "initialValue": null
-        },
-        "description": "Black Chair",
-        "domain": "QBO",
-        "id": "xJy9MTonHdlDaNUf13JZ",
-        "image": {
-            "downloadURL": "https://www.gettent.com/images/SF2250EBK-poly-black-chair-l.jpg",
-            "fileName": "side-T 20x20.jpeg"
-        },
-        "isActive": true,
-        "isAvailable": true,
-        "isTaxable": true,
-
-        "name": "Black Chair",
-        "notes": "",
-        "orgId": "1EFnp9dnRUnAWQTPO2U4",
-        "qbId": "74",
-        "rates": [],
-        "stock": 16,
-        "syncToken": "0",
-        "turnaround": null,
-        "type": "rental",
-        "updateSource": "qbo",
-        "updatedBy": "sGn9ZIc0hQPffroyZdAwcjFr7Sq2",
-        "updatedOn": {
-            "_seconds": 1639157206,
-            "_nanoseconds": 767000000
-        }
-    },
-]
-
-
+{"https://raz.rentals/rental-shop/"}
 
 export default class AdelieCart {
-    constructor({ marginTop = 100, marginBottom = 20,  color = '#000', secretKey = "a", sticky=false }) {
+    constructor({ marginTop = 100, marginBottom = 20,  color = '#000', secretKey = "", appId = "", sticky=false }) {
         function margin(params) {
             if (typeof params !== 'string') {
                 params = JSON.stringify(params)
@@ -235,28 +26,14 @@ export default class AdelieCart {
         this.marginBottom = marginBottom
         this.color = color;
         this.secretKey = secretKey;
+        this.appId = appId
         this.sticky = sticky
         this.pickupDateTime = localStorage.getItem('pickupDateTime')
         this.returnDateTime = localStorage.getItem('returnDateTime')
         this.categories = []
         this.totalCategoryCount = 0
-        this.products = cat
-        this?.products?.map((v, i) => {
-            v?.categories?.map((val, ind) => {
-                if (this?.categories?.filter(e => e.name === val.name).length > 0) {
-                    this?.categories?.map((v, i) => {
-                        if (v?.name === val.name){
-                            v.count = v?.count + 1
-                            this.totalCategoryCount += 1
-                        }
-                    })
-                }else{
-                    this?.categories.push({id: val.id, name:val.name, count: 1})
-                    this.totalCategoryCount += 1
-                }
-                
-            })
-        })
+        this.allProducts = []
+        this.products = []
         this.productDetailModel = false
         this.productDetail = {}
         this.cart = {}
@@ -273,7 +50,7 @@ export default class AdelieCart {
         `)
     }
     async listingCategories() {
-        var data = `<div class='categoryChildren categoryHandler active' data-id="v-all"><span>All</span> <span>${this.totalCategoryCount}</span></div>`
+        var data = `<div class='categoryChildren categoryHandler active' data-id="v-all"><span>All</span> <span>${this.totalCategoryCount > 0 ? this.totalCategoryCount : this.products.length}</span></div>`
         this?.categories?.map((v, i) => {
             data += `
                 <div class='categoryChildren categoryHandler' data-id="${v.id}-${v.name}"><span>${v.name}</span><span>${v.count}</span></div>
@@ -293,25 +70,35 @@ export default class AdelieCart {
     daysDifference(date) {
         var date1 = new Date()
         var date2 = new Date(date * 1000)
-        var total_seconds = Math.abs(date2 - date1) / 1000;  
+        var total_seconds = Math.abs(date2 - date1) / 1000000000;  
         var days_difference = Math.floor(total_seconds / (60 * 60 * 24));
         return days_difference
+    }
+    getRate(val){
+        const date = new Date(this.returnDateTime).getDate() - new Date(this.pickupDateTime).getDate()
+        let dateRange = ''
+        if (date >= 1) { dateRange = 'day' } else if (date <= 7) { dateRange = 'week' }else{ dateRange = 'month' }
+
+        return val?.rates.find(a => a.dateRange == dateRange) ? val?.rates.find(a => a.dateRange == dateRange)?.date : val?.rates[0] ? val?.rates[0].rate : 'No Rate'
     }
     async listingProducts() {
         var data = ``
         this?.products?.map((val, ind) => {
-            var days_difference = this.daysDifference(val?.createdOn?._seconds)
+            var days_difference = this.daysDifference(val?.createdOn?._seconds ? val?.createdOn?._seconds : val?.createdOn)
+            
             data += `
                 <div class="adelie_card adelie-col productDetailHandler" data-id="${val?.id}">
                     <img src="${val?.image?.downloadURL}" />
                     <div class="adelie_card_body">
                         <h5 class="adelie_cart">
                             <span>${val?.name}</span>
-                            <span class="adelie_cart_button">
-                                <img width='25' height="25" src="./shopping-cart.png" />
-                            </span>
+                            <div>
+                                <span class="adelie_cart_button">
+                                    <img width='25' height="25" src="./shopping-cart.png" />
+                                </span>
+                            </div>
                         </h5>
-                        <p>${days_difference} ${days_difference > 1 ? 'days' : 'day'}</p>
+                        <small>${days_difference} ${days_difference > 1 ? 'days' : 'day'} AUD ${this.getRate(val)}</small>
                     </div>
                 </div>
             `
@@ -337,10 +124,10 @@ export default class AdelieCart {
                         <div class="adelie_model_body_details">
                             <h2><span>${this.productDetail.name}</span> <span class="adelie_model_days">${days_difference} ${days_difference > 1 ? 'days' : 'day'}</span></h2>
                             <div class="adelie_model_cart">
-                                <input value='1' id="stock-${this.productDetail?.id}" type='number' ${this.productDetail?.availableStock < 1 && 'disabled' } min='1' max='${this.productDetail?.availableStock}' />
-                                <button class="adelie_add_to_cart" ${this.productDetail?.availableStock < 1 && 'disabled' } data-id="${this.productDetail?.id}">Add to booking</button>
+                                <input value='1' id="stock-${this.productDetail?.id}" type='number' ${this.productDetail?.stock < 1 && 'disabled' } min='1' max='${this.productDetail?.stock}' />
+                                <button class="adelie_add_to_cart" ${this.productDetail?.stock < 1 && 'disabled' } data-id="${this.productDetail?.id}">Add to booking</button>
                                 <p class="adelie_heling_text">
-                                    ${this.productDetail?.availableStock} available stock
+                                    ${this.productDetail?.stock} available stock
                                 </p>
                             </div>
                             <h4>${this.productDetail.name} for Hire</h4>
@@ -355,6 +142,9 @@ export default class AdelieCart {
             $('.adelie_model_main').addClass('adelie_model_none')
             $('body').removeClass('noScroll')
         }
+    }
+    getCartProducts () {
+        return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')): this.cart
     }
     async listingFloatingCartIcon() {
         $('#adelie_floating_cart_icon_main').html(`
@@ -371,17 +161,16 @@ export default class AdelieCart {
                     <hr />
                     <span class="adelie_floating_cart_items">
                         <span>Items</span>
-                        <span>${Object.values(this.cart).length}</span>
+                        <span>${Object.values(this.getCartProducts()).length}</span>
                     </span>
                 </div>
             </div>
         `)
     }
-    async listingFloatingCart() {
+    returnCartProducts() {
         let data = ''
-        this.products?.map((v, i) => {
-            if (Object.keys(this.cart).includes(v.id)) {
-                const qty = this.cart[v.id]
+        this.products?.filter(v => Object.keys(this.getCartProducts()).includes(v.id)).map((v, i) => {
+                const qty = this.getCartProducts()[v.id]
                 data += `<div class="adelie_floating_cart_body_product">
                     <div class="adelie_floating_cart_body_product_main">
                         <div data-id="${v?.id}" class="adelie_floating_cart_body_product_close">
@@ -400,10 +189,14 @@ export default class AdelieCart {
                                 </div>
                             </div>
                         </div>
+                        <span style="text-align: right; width: 100%; display: inline-block;">AUD ${this.getRate(v) * qty}</span>
                     </div>
                 </div>`
-            }
         })
+        return data
+    }
+    async listingFloatingCart() {
+        
         $('#adelie_floating_cart_main').html(`
             <div class="adelie_floating_cart">
                 <div id="adelie_floating_cart_close">
@@ -420,71 +213,172 @@ export default class AdelieCart {
                     </div>
                 </div>
                 <div class="adelie_floating_cart_body">
-                    ${data}
+                    ${this.returnCartProducts()}
                 </div>
                 <div class="adelie_floating_cart_footer">
-                    <button>REQUEST BOOKING</button>
+                    <a href="?booking=true" ${Object.values(this.getCartProducts()).length === 0 && "disabled"}>REQUEST BOOKING</a>
                 </div>
             </div>
         `)
+    }
+    async ListBookingProducts() {
+        await $('#adelieBookingProducts').html(this.returnCartProducts())
     }
     async listing() {
         $('#adelie').css({ 'margin-top': this.marginTop, 'margin-bottom': this.marginBottom })
-        await $('#adelie').html(`
-            <div class="adelie_model_main adelie_model_none"></div>
-            <div id="adelie_left" class='adelie-border adelie-border-radius ${this.sticky && 'adelieLeftSticky'}'>
-                <div id="adelieDateTime"></div>
-                <div id="adelieCategories"></div>
-            </div>
-            <div id="adelie_right">
-                <div id="adelieSearch" class="${this.sticky && 'adelieSearchSticky'}"></div>
-                <div id="adelieProducts" class="adelie-row"></div>
-            </div>
-            <div id="adelie_floating_cart_main" class="adelie_model_none"></div>
-            <div id="adelie_floating_cart_icon_main"></div>
-        `)
-        await this.listDateTime()
-        await this.listingCategories()
-        await this.listingSearch()
-        await this.listingFloatingCartIcon()
-        await this.listingFloatingCart()
-        await this.listingProducts()
+        const index = `
+                        <div class="adelie_model_main adelie_model_none"></div>
+                        <div id="adelie_left" class='adelie-border adelie-border-radius ${this.sticky && 'adelieLeftSticky'}'>
+                            <div id="adelieDateTime"></div>
+                            <div id="adelieCategories"></div>
+                        </div>
+                        <div id="adelie_right">
+                            <div id="adelieSearch" class="${this.sticky && 'adelieSearchSticky'}"></div>
+                            <div id="adelieProducts" class="adelie-row"></div>
+                        </div>
+                        <div id="adelie_floating_cart_main" class="adelie_model_none"></div>
+                        <div id="adelie_floating_cart_icon_main"></div>
+                    `
+        const booking = `
+                            <div id="adelie_left" class="adelie_booking_left">
+                                <div class="adelie_floating_cart_header adelie-top-border-radius">
+                                    <h6>MY Booking</h6>
+                                    <div class="adelie_floating_cart_dates">
+                                        <large>${new Date(this.pickupDateTime).toLocaleDateString()}</large>
+                                        <small>${new Date(this.pickupDateTime).toLocaleTimeString()}</small>
+                                        <img src="./next.png" height="15px" width="15px" />
+                                        <large>${new Date(this.returnDateTime).toLocaleDateString()}</large>
+                                        <small>${new Date(this.returnDateTime).toLocaleTimeString()}</small>
+                                    </div>
+                                </div>
+                                <div id="adelieBookingProducts"></div>
+                                <div id="adelieBookingCalculations"></div>
+                            </div>
+                            <div id="adelie_right" class="adelie_booking_right"></div>
+                        `
+        let check = true
+        if (window.location.href.split('?')[1].includes('true')) {
+            check = false
+        }
+        await $('#adelie').html(check ? index : booking)
+        if (check) {
+            await this.listDateTime()
+            await this.listingCategories()
+            await this.listingSearch()
+            await this.listingFloatingCartIcon()
+            await this.listingFloatingCart()
+            await this.listingProducts()
+        }else {
+            await this.ListBookingProducts()
+            this.ListingCommonFunctions(false)
+        }
+    }
+    ListingCommonFunctions(check) {
+        const a = this
+        const carts = this.getCartProducts()
+        $('.adelie_floating_cart_minus').on('click', function () {
+            const id = $(this).attr('data-id')
+            if (Object.values(carts).includes(id)) {
+                if (carts[id] >= 2) {
+                    carts[id] -= 1
+                }else {
+                    delete carts[id]
+                }
+                localStorage.setItem('cart', JSON.stringify(carts))
+                if (check) {
+                    a.listingFloatingCartIcon()
+                    a.listingFloatingCart()
+                    a.listingFunctions()
+                }else{
+                    a.ListBookingProducts()
+                    a.ListingCommonFunctions(check)
+                }
+            }
+        })
+        $('.adelie_floating_cart_plus').on('click', function () {
+            const id = $(this).attr('data-id')
+            console.log(id)
+            if (Object.keys(carts).includes(id) && a.products.find(e => e.id === id).stock > carts[id]) {
+                carts[id] += 1
+                localStorage.setItem('cart', JSON.stringify(carts))
+                if (check) {
+                    a.listingFloatingCartIcon()
+                    a.listingFloatingCart()
+                    a.listingFunctions()
+                }else{
+                    a.ListBookingProducts()
+                    a.ListingCommonFunctions(check)
+                }
+            }
+        })
+        $('.adelie_floating_cart_body_product_close').on('click', function () {
+            const id = $(this).attr('data-id')
+            if (Object.keys(carts).includes(id)){
+                delete carts[id]
+                localStorage.setItem('cart', JSON.stringify(carts))
+                if (check) {
+                    a.listingFloatingCartIcon()
+                    a.listingFloatingCart()
+                    a.listingFunctions()
+                }else{
+                    a.ListBookingProducts()
+                    a.ListingCommonFunctions(check)
+                }
+            }
+        })
     }
     async listingFunctions() {
         var a = this
+        const carts = this.getCartProducts()
         $('#top_datetime').on('change', function () {
-            if (this.value > a.returnDateTime) {
-                localStorage.setItem('returnDateTime', this.value)
-                localStorage.setItem('pickupDateTime', a.returnDateTime)
-                a.pickupDateTime = a.returnDateTime
-                a.returnDateTime = this.value
-            } else {
-                localStorage.setItem('pickupDateTime', this.value)
-                a.pickupDateTime = this.value
+            if (this.value !== a.returnDateTime) {
+                if (this.value > a.returnDateTime) {
+                    console.log(a.returnDateTime, this.value)
+                    a.pickupDateTime = a.returnDateTime
+                    a.returnDateTime = this.value
+                    localStorage.setItem('pickupDateTime', a.returnDateTime)
+                    localStorage.setItem('returnDateTime', this.value)
+                } else {
+                    a.pickupDateTime = this.value
+                    localStorage.setItem('pickupDateTime', this.value)
+                    console.log(this.value)
+                }
+                a.listDateTime()
+                a.listingFunctions()
             }
-            a.listDateTime()
-            a.listingFunctions()
         })
         $('#bottom_datetime').on('change', function () {
-            if (this.value < a.pickupDateTime) {
-                localStorage.setItem('pickupDateTime', this.value)
-                localStorage.setItem('returnDateTime', a.pickupDateTime)
-                a.returnDateTime = a.pickupDateTime
-                a.pickupDateTime = this.value
-            } else {
-                localStorage.setItem('returnDateTime', this.value)
-                a.returnDateTime = this.value
+            if (this.value !== a.pickupDateTime) {
+                if (this.value < a.pickupDateTime) {
+                    localStorage.setItem('pickupDateTime', this.value)
+                    localStorage.setItem('returnDateTime', a.pickupDateTime)
+                    a.returnDateTime = a.pickupDateTime
+                    a.pickupDateTime = this.value
+                } else {
+                    localStorage.setItem('returnDateTime', this.value)
+                    a.returnDateTime = this.value
+                }
+                a.listDateTime()
+                a.listingFunctions()
             }
-            a.listDateTime()
-            a.listingFunctions()
         })
         $('#SearchHandler').on('keydown', function (e) {
-            if (e.target.value === ''){
-                a.products = cat
+            let check = true
+            const z = a.allProducts.filter(v => v.name.toLowerCase().includes(e.target.value.toLowerCase()))
+            if (z?.length !== a?.products?.length) {
+                if (e.target.value === ''){
+                    a.products = a.allProducts
+                }else{
+                    a.products = z
+                }
+                check = true
             }else{
-                a.products = cat.filter(v => v.name.toLowerCase().includes(e.target.value.toLowerCase()))
+                check = false
             }
-            a.listingProducts()
+            if (check) {
+                a.listingProducts()
+                a.listingFunctions()
+            }
         })
         $('.categoryHandler').on('click', function () {
             $('.categoryHandler').removeClass('active')
@@ -492,10 +386,10 @@ export default class AdelieCart {
             const [id, name] = $(this).attr('data-id').split('-')
             var products = []
             if (name === 'all'){
-                products = cat
+                products = a.allProducts
             }else{
-                cat.filter(v => {
-                    v.categories.filter(c => {
+                a?.allProducts?.filter(v => {
+                    v?.categories?.filter(c => {
                         if (c.name === name && c.id === id){
                             products.push(v)
                         }
@@ -504,10 +398,12 @@ export default class AdelieCart {
             }
             a.products = products
             a.listingProducts()
+            a.listingFunctions()
         })
         $('.productDetailHandler').on('click', function () {
             const id = $(this).attr('data-id')
-            a.productDetail = cat.find(v => v.id == id)
+            console.log(id)
+            a.productDetail = a.allProducts.find(v => v.id == id)
             a.productDetailModel = true
             a.listingProductModel()
             a.listingFunctions()
@@ -519,11 +415,12 @@ export default class AdelieCart {
         $('.adelie_add_to_cart').on('click', function() {
             const id = $(this).attr('data-id')
             const value = parseInt($(`#stock-${id}`).val())
-            if (Object.keys(a.cart).includes(id)){
-                a.cart[id] += value
+            if (Object.keys(carts).includes(id)){
+                carts[id] += value
             }else{
-                a.cart[id] = value
+                carts[id] = value
             }
+            localStorage.setItem('cart', JSON.stringify(carts))
             a.listingProductModel()
             a.listingFloatingCartIcon()
             a.listingFloatingCart()
@@ -537,44 +434,47 @@ export default class AdelieCart {
             $('#adelie_floating_cart_main').addClass('adelie_model_none')
             $('#adelie_floating_cart_icon_main').removeClass('adelie_model_none')
         })
-        $('.adelie_floating_cart_minus').on('click', function () {
-            const id = $(this).attr('data-id')
-            if (Object.keys(a.cart).includes(id)) {
-                if (a.cart[id] >= 2) {
-                    a.cart[id] -= 1
-                }else {
-                    delete a.cart[id]
-                }
-                a.listingFloatingCartIcon()
-                a.listingFloatingCart()
-                a.listingFunctions()
-            }
-        })
-        $('.adelie_floating_cart_plus').on('click', function () {
-            const id = $(this).attr('data-id')
-            if (Object.keys(a.cart).includes(id) && a.products.find(e => e.id === id).availableStock > a.cart[id]) {
-                a.cart[id] += 1
-                a.listingFloatingCartIcon()
-                a.listingFloatingCart()
-                a.listingFunctions()
-            }
-        })
-        $('.adelie_floating_cart_body_product_close').on('click', function () {
-            const id = $(this).attr('data-id')
-            if (Object.keys(a.cart).includes(id)){
-                delete a.cart[id]
-                a.listingFloatingCartIcon()
-                a.listingFloatingCart()
-                a.listingFunctions()
-            }
-        })
+        this.ListingCommonFunctions(true)
     }
     async init() {
-        if (this.secretKey) {
-            await this.listing()
-            await this.listingFunctions()
+        if (this.secretKey && this.appId) {
+            const client = algoliasearch(this.appId, this.secretKey)
+            const index = client.initIndex('inventory')
+
+            index.search('', {
+                hitsPerPage: 50,
+            // other filter and params can go here.
+            }).then(({ hits }) => {
+                this.products = hits
+                this.allProducts = hits
+                console.log(
+                    hits
+                )
+                hits?.map((v, i) => {
+                    v?.categories?.map((val, ind) => {
+                        if (this?.categories?.filter(e => e.name === val.name).length > 0) {
+                            this?.categories?.map((v, i) => {
+                                if (v?.name === val.name){
+                                    v.count = v?.count + 1
+                                    this.totalCategoryCount += 1
+                                }
+                            })
+                        }else{
+                            this?.categories.push({id: val.id, name:val.name, count: 1})
+                            this.totalCategoryCount += 1
+                        }
+                        
+                    })
+                })
+                this.listing()
+                let check = true
+                if (window.location.href.split('?')[1].includes('true')) {
+                    check = false
+                }
+                check ? this.listingFunctions() : this.ListingCommonFunctions(check)
+            });
         } else {
-            console.log("Please provide the secretKey")
+            alert("Please provide the secret key/app id")
         }
     }
 }
