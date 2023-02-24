@@ -79,7 +79,7 @@ export default class AdelieCart {
         let rateRange = ''
         if (date >= 1) { rateRange = 'day' } else if (date <= 7) { rateRange = 'week' }else{ rateRange = 'month' }
 
-        return val?.rates.find(a => a.rateRange == rateRange) ? val?.rates.find(a => a.rateRange == rateRange)?.rate * date : val?.rates[0] ? val?.rates[0].rate * date : 0
+        return val?.rates.find(a => a.rateRange == rateRange) ? (val?.rates.find(a => a.rateRange == rateRange)?.rate / 100) * date : val?.rates[0] ? (val?.rates[0].rate / 100) * date : 0
     }
     async listingProducts() {
         var data = ``
@@ -311,7 +311,7 @@ export default class AdelieCart {
                             <div id="adelie_right" class="adelie_booking_right"></div>
                         `
         let check = true
-        if (window.location.href.split('?')[1].includes('true')) {
+        if (window.location.href.split('?')[1] && window.location.href.split('?')[1].includes('true')) {
             check = false
         }
         await $('#adelie').html(check ? index : booking)
@@ -426,6 +426,7 @@ export default class AdelieCart {
                     localStorage.setItem('pickupDateTime', this.value)
                 }
                 a.listDateTime()
+                a.listingProducts()
                 a.listingFunctions()
             }
         })
@@ -441,6 +442,7 @@ export default class AdelieCart {
                     a.returnDateTime = this.value
                 }
                 a.listDateTime()
+                a.listingProducts()
                 a.listingFunctions()
             }
         })
@@ -547,7 +549,7 @@ export default class AdelieCart {
                 })
                 this.listing()
                 let check = true
-                if (window.location.href.split('?')[1].includes('true')) {
+                if (window.location.href.split('?')[1] && window.location.href.split('?')[1].includes('true')) {
                     check = false
                 }
                 check ? this.listingFunctions() : this.listingBookingFunctions(check)
