@@ -76,10 +76,10 @@ export default class AdelieCart {
     }
     getRate(val){
         const date = new Date(this.returnDateTime).getDate() - new Date(this.pickupDateTime).getDate()
-        let dateRange = ''
-        if (date >= 1) { dateRange = 'day' } else if (date <= 7) { dateRange = 'week' }else{ dateRange = 'month' }
+        let rateRange = ''
+        if (date >= 1) { rateRange = 'day' } else if (date <= 7) { rateRange = 'week' }else{ rateRange = 'month' }
 
-        return val?.rates.find(a => a.dateRange == dateRange) ? val?.rates.find(a => a.dateRange == dateRange)?.date : val?.rates[0] ? val?.rates[0].rate : 'No Rate'
+        return val?.rates.find(a => a.rateRange == rateRange) ? val?.rates.find(a => a.rateRange == rateRange)?.rate * date : val?.rates[0] ? val?.rates[0].rate * date : 0
     }
     async listingProducts() {
         var data = ``
@@ -216,13 +216,67 @@ export default class AdelieCart {
                     ${this.returnCartProducts()}
                 </div>
                 <div class="adelie_floating_cart_footer">
-                    <a href="?booking=true" ${Object.values(this.getCartProducts()).length === 0 && "disabled"}>REQUEST BOOKING</a>
+                    ${Object.values(this.getCartProducts()).length === 0 
+                        ? '<button disabled>REQUEST BOOKING</button>'
+                        : '<a href="?booking=true">REQUEST BOOKING</a>'
+                    }
+                    
+                    
                 </div>
             </div>
         `)
     }
     async ListBookingProducts() {
+        const subTotal = this.products.filter(v => Object.keys(this.getCartProducts()).includes(v.id)).map(v => {
+            return this.getRate(v) * this.getCartProducts()[v.id]
+        }).reduce((a, b) => {return a+b})
+        const gst = 600
         await $('#adelieBookingProducts').html(this.returnCartProducts())
+        await $("#adelieBookingCalculations").html(`
+            <div class="adelie_booking_calculation_main">
+                <hr />
+                <div>
+                    <b>Subtotal</b>
+                    <b>AUD ${subTotal}</b>
+                </div>
+                <hr />
+                <div>
+                    <span>GST</span>
+                    <span>AUD ${gst}</span>
+                </div>
+                <div>
+                    <b>Total</b>
+                    <b>AUD ${subTotal + gst}</b>
+                </div>
+                <a href="?booking=false">Edit booking or edit items</a>
+            </div>
+        `)
+    }
+    async ListBookingDetails(nameErr=false, emailErr=false, phoneErr=false, name='', email='', phone='', job='', note='') {
+        $('.adelie_booking_right').html(`
+            <h2 class="adelie_booking_personal_details">Personal Details</h2>
+            <div class='adelie_booking_detail'>
+                <h6>Name <span>*</span></h6>
+                <input class="adelie_booking_input ${nameErr && 'error'}" value="${name}" type='text' name='name' />
+            </div>
+            <div class='adelie_booking_detail'>
+                <h6>Email <span>*</span></h6>
+                <input class="adelie_booking_input ${emailErr && 'error'}" value="${email}" type='email' name='email' />
+            </div>
+            <div class='adelie_booking_detail'>
+                <h6>Phone <span>*</span></h6>
+                <input class="adelie_booking_input ${phoneErr && 'error'}" value="${phone}" type='number' name='phone' />
+            </div>
+            <div class='adelie_booking_detail'>
+                <h6>Job Name</h6>
+                <input class="adelie_booking_input" value="${job}" type='text' name='job' />
+            </div>
+            <div class='adelie_booking_detail'>
+                <h6>Special Notes</h6>
+                <input class="adelie_booking_input" value="${note}" type='text' name='note' />
+            </div>
+            <input type="button" id="adelie_request_booking_button" value="Request Booking">
+        `)
     }
     async listing() {
         $('#adelie').css({ 'margin-top': this.marginTop, 'margin-bottom': this.marginBottom })
@@ -270,7 +324,8 @@ export default class AdelieCart {
             await this.listingProducts()
         }else {
             await this.ListBookingProducts()
-            this.ListingCommonFunctions(false)
+            await this.ListBookingDetails()
+            this.listingBookingFunctions(false)
         }
     }
     ListingCommonFunctions(check) {
@@ -278,7 +333,7 @@ export default class AdelieCart {
         const carts = this.getCartProducts()
         $('.adelie_floating_cart_minus').on('click', function () {
             const id = $(this).attr('data-id')
-            if (Object.values(carts).includes(id)) {
+            if (Object.keys(carts).includes(id)) {
                 if (carts[id] >= 2) {
                     carts[id] -= 1
                 }else {
@@ -291,13 +346,12 @@ export default class AdelieCart {
                     a.listingFunctions()
                 }else{
                     a.ListBookingProducts()
-                    a.ListingCommonFunctions(check)
+                    a.listingBookingFunctions(check)
                 }
             }
         })
         $('.adelie_floating_cart_plus').on('click', function () {
             const id = $(this).attr('data-id')
-            console.log(id)
             if (Object.keys(carts).includes(id) && a.products.find(e => e.id === id).stock > carts[id]) {
                 carts[id] += 1
                 localStorage.setItem('cart', JSON.stringify(carts))
@@ -307,7 +361,7 @@ export default class AdelieCart {
                     a.listingFunctions()
                 }else{
                     a.ListBookingProducts()
-                    a.ListingCommonFunctions(check)
+                    a.listingBookingFunctions(check)
                 }
             }
         })
@@ -322,8 +376,38 @@ export default class AdelieCart {
                     a.listingFunctions()
                 }else{
                     a.ListBookingProducts()
-                    a.ListingCommonFunctions(check)
+                    a.listingBookingFunctions(check)
                 }
+            }
+        })
+    }
+    async listingBookingFunctions(check=false) {
+        const a = this
+        this.ListingCommonFunctions(check)
+        $('#adelie_request_booking_button').on('click', function () {
+            const result={}
+            let name = $('input.adelie_booking_input[name=name]').val()
+            let email = $('input.adelie_booking_input[name=email]').val()
+            let phone = $('input.adelie_booking_input[name=phone]').val()
+            let job = $('input.adelie_booking_input[name=job]').val()
+            let note = $('input.adelie_booking_input[name=note]').val()
+            if (name == '' || email == ''  || phone == '') {
+                a.ListBookingDetails(
+                        name == '' ? true : false,
+                        email == '' ? true : false,
+                        phone == '' ? true : false,
+                        name,
+                        email,
+                        phone,
+                        job,
+                        note
+                    )
+                a.listingBookingFunctions()
+                console.log('here')
+            }else{
+                const url = `${location.pathname}?booking=false`
+                localStorage.setItem('cart', '')
+                location.href = url
             }
         })
     }
@@ -333,7 +417,6 @@ export default class AdelieCart {
         $('#top_datetime').on('change', function () {
             if (this.value !== a.returnDateTime) {
                 if (this.value > a.returnDateTime) {
-                    console.log(a.returnDateTime, this.value)
                     a.pickupDateTime = a.returnDateTime
                     a.returnDateTime = this.value
                     localStorage.setItem('pickupDateTime', a.returnDateTime)
@@ -341,7 +424,6 @@ export default class AdelieCart {
                 } else {
                     a.pickupDateTime = this.value
                     localStorage.setItem('pickupDateTime', this.value)
-                    console.log(this.value)
                 }
                 a.listDateTime()
                 a.listingFunctions()
@@ -402,7 +484,6 @@ export default class AdelieCart {
         })
         $('.productDetailHandler').on('click', function () {
             const id = $(this).attr('data-id')
-            console.log(id)
             a.productDetail = a.allProducts.find(v => v.id == id)
             a.productDetailModel = true
             a.listingProductModel()
@@ -447,9 +528,7 @@ export default class AdelieCart {
             }).then(({ hits }) => {
                 this.products = hits
                 this.allProducts = hits
-                console.log(
-                    hits
-                )
+                console.log(hits)
                 hits?.map((v, i) => {
                     v?.categories?.map((val, ind) => {
                         if (this?.categories?.filter(e => e.name === val.name).length > 0) {
@@ -471,7 +550,7 @@ export default class AdelieCart {
                 if (window.location.href.split('?')[1].includes('true')) {
                     check = false
                 }
-                check ? this.listingFunctions() : this.ListingCommonFunctions(check)
+                check ? this.listingFunctions() : this.listingBookingFunctions(check)
             });
         } else {
             alert("Please provide the secret key/app id")

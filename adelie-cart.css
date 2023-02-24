@@ -100,7 +100,7 @@ body{
     border-top-left-radius: var(--adelie-border-radius);
     border-bottom-left-radius: var(--adelie-border-radius);
 }
-#adelie #adelie_right #adelieSearch input {
+#adelie #adelie_right #adelieSearch input, .adelie_booking_input {
     width: calc(100% - (25px + 30px));
     padding: 10px;
     outline: none;
@@ -314,7 +314,7 @@ body{
     color: #515151;
     z-index: 3;
 }
-#adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_footer a {
+#adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_footer a, #adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_footer button {
     display: inline-block;
     text-align: center;
     background-color: var(--adelie-main-color);
@@ -325,7 +325,7 @@ body{
     border: none;
     text-decoration: none;
 }
-#adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_footer a:focus-visible {
+#adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_footer a:focus-visible, #adelie_floating_cart_main .adelie_floating_cart .adelie_floating_cart_footer button:focus-visible {
     outline: none;
 }
 
@@ -501,4 +501,50 @@ body{
 #adelie #adelie_left.adelie_booking_left {
     padding: 0px;
     margin-top: 20px;
+}
+div.adelie_booking_right {
+    padding-top: 10px;
+}
+div.adelie_booking_right .adelie_booking_personal_details {
+    text-align: center;
+}
+div.adelie_booking_right .adelie_booking_detail {
+    margin-top: 20px;
+}
+div.adelie_booking_right .adelie_booking_detail span {
+    color: rgb(247, 84, 84);
+}
+div.adelie_booking_calculation_main div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+div.adelie_booking_calculation_main a, input#adelie_request_booking_button{
+    color: rgb(33, 59, 71);
+    background-color: rgb(191, 197, 203);
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: var(--adelie-border-radius);
+}
+input#adelie_request_booking_button {
+    background-color: var(--adelie-main-color);
+    color: #fff;
+    border: none;
+    margin-top: 30px;
+}
+div.adelie_booking_calculation_main a:hover{
+    text-decoration: none;
+    box-shadow: rgb(0 0 0 / 12%) 0px 0px 400px 110px inset;
+    color: rgb(33, 59, 71);
+}
+input.adelie_booking_input {
+    border: var(--adelie-border);
+    width: 100%;
+}
+input.adelie_booking_input.error {
+    border-color: rgb(247, 84, 84);
 }
